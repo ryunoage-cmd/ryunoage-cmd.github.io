@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NOAGE（ノアージュ）｜集荷したその日にお届け。</title>
+    <style>
+        :root {
+            --blue: #0875c7;
+            --green: #16b9a5;
+            --ink: #17344c;
+            --muted: #607585;
+            --pale: #eff9fc
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: "Yu Gothic", Meiryo, sans-serif;
+            color: var(--ink);
+            line-height: 1.8;
+            background: #fff
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #ffffffed;
+            backdrop-filter: blur(12px);
+            z-index: 2;
+            border-bottom: 1px solid #e6f1f5
+        }
+
+        .nav {
+            max-width: 1120px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 12px 20px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: .12em;
+            color: var(--blue);
+            font-size: 23px
+        }
+
+        .links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            font-weight: 700
+        }
+
+        .links a:hover {
+            color: var(--blue)
+        }
+
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 72px 20px;
+            background: radial-gradient(circle at 50% 40%, #e9fcfb 0%, #fff 58%)
+        }
+
+        .hero img {
+            display: block;
+            width: min(290px, 70vw);
+            height: auto;
+            margin: 0 auto 22px
+        }
+
+        .eyebrow {
+            color: var(--green);
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: .15em
+        }
+
+        .hero h1 {
+            font-size: clamp(26px, 4vw, 43px);
+            line-height: 1.45;
+            margin: 12px 0
+        }
+
+        .tagline {
+            color: var(--muted);
+            font-size: 17px;
+            margin: 8px 0 30px
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 999px;
+            background: linear-gradient(110deg, var(--blue), var(--green));
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 8px 20px #0875c722
+        }
+
+        .btn.secondary {
+            background: white;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+            box-shadow: none
+        }
+
+        section {
+            padding: 76px 20px;
+            scroll-margin-top: 70px
+        }
+
+        .wrap {
+            max-width: 1040px;
+            margin: auto
+        }
+
+        .soft {
+            background: var(--pale)
+        }
+
+        h2 {
+            text-align: center;
+            font-size: clamp(24px, 3vw, 32px);
+            margin: 0 0 12px
+        }
+
+        h2:after {
+            content: "";
+            display: block;
+            width: 54px;
+            height: 4px;
+            border-radius: 4px;
+            margin: 14px auto 26px;
+            background: linear-gradient(90deg, var(--blue), var(--green))
+        }
+
+        .intro {
+            text-align: center;
+            color: var(--muted);
+            max-width: 720px;
+            margin: 0 auto 30px
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        .card {
+            padding: 28px 24px;
+            background: #fff;
+            border: 1px solid #e3eff3;
+            border-radius: 18px;
+            box-shadow: 0 8px 28px #1c6c9710
+        }
+
+        .card h3 {
+            color: var(--blue);
+            margin: 0 0 10px
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .price {
+            text-align: center;
+            font-size: clamp(24px, 4vw, 39px);
+            font-weight: 900;
+            color: var(--blue)
+        }
+
+        .price small {
+            font-size: 15px;
+            color: var(--muted)
+        }
+
+        .note {
+            font-size: 14px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        .area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        .area h3 {
+            color: var(--blue)
+        }
+
+        details {
+            padding: 17px 20px;
+            border-bottom: 1px solid #d9e7ed;
+            background: white
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold
+        }
+
+        details p {
+            color: var(--muted)
+        }
+
+        .contact {
+            text-align: center
+        }
+
+        .contact p {
+            color: var(--muted)
+        }
+
+        footer {
+            background: #13364f;
+            color: #fff;
+            text-align: center;
+            padding: 28px 15px;
+            font-size: 13px
+        }
+
+        @media(max-width:700px) {
+            .nav {
+                display: block;
+                text-align: center
+            }
+
+            .links {
+                justify-content: center;
+                gap: 8px 14px;
+                margin-top: 6px;
+                font-size: 11px
+            }
+
+            .hero {
+                min-height: 540px;
+                padding: 45px 16px
+            }
+
+            .cards,
+            .area {
+                grid-template-columns: 1fr
+            }
+
+            section {
+                padding: 55px 17px
+            }
+        }
+
+        /* 既存の配色とレイアウトを維持した追加スタイル */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-align: left
+        }
+
+        .field.wide {
+            grid-column: 1/-1
+        }
+
+        .field label {
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbdfe8;
+            border-radius: 10px;
+            font: inherit;
+            background: #fff;
+            color: var(--ink)
+        }
+
+        .field textarea {
+            min-height: 100px;
+            resize: vertical
+        }
+
+        .panel {
+            max-width: 850px;
+            margin: 28px auto 0;
+            background: white;
+            border: 1px solid #e3eff3;
+            border-radius: 18px;
+            padding: 25px;
+            text-align: left
+        }
+
+        .panel h3 {
+            color: var(--blue);
+            margin: 0 0 12px
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .result {
+            padding: 18px;
+            border-radius: 12px;
+            background: var(--pale);
+            margin-top: 18px
+        }
+
+        .result strong {
+            font-size: 25px;
+            color: var(--blue)
+        }
+
+        button.btn {
+            border: 0;
+            cursor: pointer;
+            font: inherit
+        }
+
+        .ghost {
+            border: 1px solid var(--blue);
+            color: var(--blue);
+            border-radius: 9px;
+            padding: 8px 14px;
+            background: white;
+            cursor: pointer
+        }
+
+        .dest {
+            padding: 14px 0;
+            border-bottom: 1px solid #e3eff3
+        }
+
+        .dest-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 8px
+        }
+
+        .dest-title strong {
+            color: var(--blue)
+        }
+
+        .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px
+        }
+
+        .status {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0)
+        }
+
+        @media(max-width:700px) {
+            .form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .panel {
+                padding: 18px
+            }
+
+            .field.wide {
+                grid-column: auto
+            }
+
+            .links {
+                line-height: 1.7
+            }
+        }
+    </style>
+<meta name="description" content="NOAGE（ノアージュ）は東京23区・草加周辺から関東圏へ、常温のお荷物を当日配送。法人・店舗・個人のお客様に対応。"><meta name="theme-color" content="#0875c7"><link rel="icon" href="NOAGE_logo_clean.png"><style>
+[hidden]{display:none!important}.hero{background:white;min-height: min(720px, 90vh)}.hero img{width:min(340px,75vw)}.nav{max-width:1180px}.links{align-items:center}.btn{cursor:pointer}.hero .replay{margin-top:20px}.opening{position:fixed;inset:0;background:#000;z-index:100;display:grid;place-items:center}.opening[hidden]{display:none}.opening video{width:100%;height:100%;object-fit:contain}.opening-controls{position:absolute;right:max(16px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));display:flex;gap:8px;flex-wrap:wrap;justify-content:end}.opening-controls button{color:white;background:#172437d9;border:1px solid #fff;border-radius:30px;padding:12px 18px;cursor:pointer;font:inherit}.opening-status{position:absolute;top:15px;color:white;background:#000a;padding:6px 12px}.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px}.slot{border:1px solid #b8d8e6;background:#fff;border-radius:10px;padding:10px;cursor:pointer;color:var(--ink);font:inherit}.slot[aria-pressed=true]{border:2px solid var(--blue);background:#e3f5ff}.slot:disabled{opacity:.5;cursor:not-allowed}.notice{padding:12px 16px;border-left:3px solid #0875c7;background:#eff9fc;margin:14px 0}.price-table{width:100%;border-collapse:collapse}.price-table th,.price-table td{padding:12px;border-bottom:1px solid #d9e7ed;text-align:left}.price-table th{width:38%}.small a{text-decoration:underline}.field input[type=checkbox]{width:auto}.section-kicker{text-align:center;font-size:12px;letter-spacing:.18em;color:var(--blue);font-weight:bold}.ghost:disabled,.btn:disabled{opacity:.5;cursor:not-allowed}.btn.secondary{border:2px solid var(--blue)}.muted{color:var(--muted)}.vehicle-placeholder{border:1px dashed #bed3df;padding:20px;border-radius:12px}.sr{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #16b9a5;outline-offset:3px}@media(max-width:700px){.hero{min-height:540px}.nav{padding:8px}.price-table th,.price-table td{padding:8px}.opening-controls button{font-size:14px}.hero .actions .btn{width:100%;max-width:320px}}
+</style><script src="config.js" defer></script><script src="app.js" defer></script></head>
+
+<body><div class="opening" id="opening" role="dialog" aria-label="NOAGEオープニング動画" aria-modal="true" hidden><video id="openingVideo" src="NOAGE_opening.mp4" playsinline preload="metadata"></video><div class="opening-controls"><button type="button" id="soundButton" hidden>音ありで再生</button><button type="button" id="skipOpening">スキップ</button></div></div>
+    <header>
+        <div class="nav"><a class="brand" href="#home">NOAGE</a>
+            <nav class="links"><a href="#about">NOAGEについて</a><a href="#service">配送サービス</a><a href="#price">料金</a><a
+                    href="#area">対応エリア</a><a href="#vehicle">車両情報</a><a href="#booking">配送依頼</a><a href="#faq">FAQ</a><a href="#contact">お問い合わせ</a></nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <div><img
+src="NOAGE_logo_clean.png"                    alt="NOAGE公式ロゴ">
+                <div class="eyebrow">大切なお荷物を、丁寧に。</div>
+                <h1>集荷したその日にお届け。</h1>
+                <p class="tagline">想いをつなぎ、未来を運ぶ。</p>
+                <div class="actions"><a class="btn" href="#booking">配送を依頼する</a><a class="btn secondary"
+                        href="#estimate">料金を確認する</a></div><button class="ghost replay" id="replayOpening" type="button">オープニングを見る</button>
+            </div>
+        </section>
+        <section id="about">
+            <div class="wrap">
+                <h2>NOAGEについて</h2>
+                <p class="intro">NOAGE（ノアージュ）は、お客様の大切なお荷物を、丁寧に運ぶ軽貨物配送サービスです。店舗・事業者様から個人のお客様まで、集荷やお届けのご希望を伺いながら、柔軟に対応します。
+                </p>
+            </div>
+        </section>
+        <section id="service" class="soft">
+            <div class="wrap">
+                <h2>配送サービス</h2>
+                <p class="intro">常温のお荷物を対象に、集荷からお届けまでご相談いただけます。</p>
+                <div class="cards">
+                    <div class="card">
+                        <h3>スポット配送</h3>
+                        <p>必要なときに、1回からご依頼いただける配送サービスです。店舗間の荷物移動、商品の納品、個人のお荷物など、お気軽にご相談ください。</p>
+                    </div>
+                    <div class="card">
+                        <h3>ルート配送</h3>
+                        <p>複数のお届け先へ順に配送します。納品順や時間、荷物量を確認してご案内します。</p>
+                    </div>
+                    <div class="card">
+                        <h3>定期配送</h3>
+                        <p>店舗や事業者様の継続的な配送についてご相談いただけます。</p>
+                    </div>
+                </div>
+                <p class="note">※ 集荷・配達の希望時間、荷物量、配送先により対応可否をご案内します。</p>
+            </div>
+        </section>
+        <section id="omakase-service"><div class="wrap"><h2>おまかせ配送</h2><div class="card"><p>集荷・配達の具体的な時間をNOAGEにお任せいただくことで、基本料金が300円お得になります。受け渡し可能時間内で調整し、集荷したその日にお届けします。</p></div></div></section><section id="pickup-service"><div class="wrap"><h2>引き取りお任せ便</h2><p class="intro">購入済みの商品を、お客様に代わって店舗で受け取り、ご指定の場所へお届けします。</p><div class="card"><p>店舗が代理受け取りを認めていること、商品代金のお支払いが済んでいることが条件です。立替払いは行いません。常温で車両に積載可能な商品が対象です。返品・交換はお客様ご自身でお願いします。</p></div></div></section><section id="price">
+            <div class="wrap">
+                <h2>配送料金</h2>
+                <p class="intro">わかりやすい距離制の料金です。</p>
+                <div class="price">通常配送 1,500円 <small>＋</small> 100円/km</div><div class="price">おまかせ配送 1,200円 <small>＋</small> 100円/km</div>
+                <p class="note">すべて税込。集荷先から納品先までのGoogleマップ推奨の一般道走行距離を基準に計算します。</p>
+                <div class="cards">
+                    <div class="card">
+                        <h3>5kmの場合</h3>
+                        <p>2,000円（税込）<br>おまかせ：1,700円（税込）</p>
+                    </div>
+                    <div class="card">
+                        <h3>10kmの場合</h3>
+                        <p>2,500円（税込）<br>おまかせ：2,200円（税込）</p>
+                    </div>
+                    <div class="card">
+                        <h3>20kmの場合</h3>
+                        <p>3,500円（税込）<br>おまかせ：3,200円（税込）</p>
+                    </div>
+                </div>
+                <p class="note">複数納品は、最初の納品先から次の納品先へ順に走行距離を加算します。高速道路料金は別途実費です。<br>※ 上記は距離を仮定した計算例です。
+                </p>
+<div class="panel"><h3>荷積み・荷降ろし・待機料金</h3><table class="price-table"><tbody><tr><th>集荷先での作業</th><td>15分まで基本料金内</td></tr><tr><th>納品先での作業</th><td>各納品先15分まで基本料金内</td></tr><tr><th>超過料金</th><td>5分ごと200円（税込）</td></tr><tr><th>待機</th><td>荷主様・荷受け様の都合による待機も同じ料金体系</td></tr></tbody></table><p class="small">各地点での荷積み・荷降ろしと対象となる待機時間は合算し、重複して請求しません。通常の荷物の受け渡しを対象とし、設置・組立・特殊作業などは対象外です。作業内容により事前にご相談ください。</p></div>            </div>
+        </section>
+
+<section id="estimate" class="soft"><div class="wrap"><h2>配送料金の概算確認</h2><p class="intro">集荷先・納品先を入力して、一般道の配送距離を基準に料金を確認できます。</p><div class="panel"><h3>配送ルート</h3><div class="field"><label for="estimateService">料金プラン</label><select id="estimateService"><option value="normal">通常配送</option><option value="omakase">おまかせ配送</option></select></div><div class="field"><label for="pickup">集荷先住所</label><input id="pickup" placeholder="都道府県・市区町村・番地"></div><div id="destinations"></div><div class="form-actions"><button class="ghost" id="addDest" type="button">＋ 納品先を追加</button><button class="ghost" id="mapRoute" type="button">Googleマップで経路を確認</button><button class="btn" id="autoDistance" type="button" disabled>住所から距離を自動取得</button></div><p id="mapStatus" class="small status" role="status"></p><p class="small">手入力の場合はGoogleマップの経路オプションで高速道路・有料道路を避け、各区間の距離を入力してください。納品先は上から順に計算します。</p><div class="result" aria-live="polite"><div id="distanceTotal">走行距離合計：未計算</div><div>概算配送料：<strong id="estimateTotal">未計算</strong></div><p class="small">通常1,500円／おまかせ1,200円＋距離×100円/km（税込）。高速代・超過作業料金等は別途。最終料金はご依頼内容の確認後にご案内します。</p></div><div class="form-actions"><button class="btn" id="acceptEstimate" type="button" disabled>この概算で配送依頼へ</button><button class="ghost" id="clearEstimate" type="button">キャンセル・入力をクリア</button></div></div></div></section>
+        <section id="area" class="soft">
+            <div class="wrap">
+                <h2>対応エリア</h2>
+                <div class="area">
+                    <div class="card">
+                        <h3>集荷対応エリア</h3>
+                        <p>東京都23区／草加市／越谷市／三郷市／八潮市／川口市</p>
+                    </div>
+                    <div class="card">
+                        <h3>配達対応エリア</h3>
+                        <p>関東圏を中心に対応。遠方への配送もご相談ください。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+<section id="vehicle"><div class="wrap"><h2>車両・積載可能サイズ</h2><p class="intro">軽貨物車両で、常温のお荷物を丁寧にお運びします。</p><div class="area"><div class="card"><h3>使用車両</h3><p>スクラムワゴン（ハイルーフ）<br>箱梱包を推奨しています。必要に応じてオリコンをご用意します。</p></div><div class="card"><h3>積載について</h3><p>荷室寸法・後部開口寸法・積載可能重量・積載例写真は実車確認後に掲載します。荷物のサイズ・個数・重量をお知らせください。</p></div></div><p class="note">積みきれない場合は、複数回の配送や翌日への持ち越しをご相談します。工事用具等はお取り扱いできません。</p></div></section>        <section id="faq">
+            <div class="wrap">
+                <h2>よくある質問</h2>
+                <details>
+                    <summary>当日の配送はお願いできますか？</summary>
+                    <p>集荷したその日にお届けするサービスです。受付時にご希望を伺い、運行状況を確認して対応可否をご案内します。</p>
+                </details>
+                <details>
+                    <summary>時間指定はできますか？</summary>
+                    <p>Webでは90分単位の集荷希望時間を選べます。確約された時間枠ではありません。個別の希望時刻や配達希望時間はご相談のうえ調整します。</p>
+                </details>
+                <details>
+                    <summary>冷蔵・冷凍品は運べますか？</summary>
+                    <p>現在は常温配送のみ対応しています。</p>
+                </details>
+                <details>
+                    <summary>複数の納品先にも対応できますか？</summary>
+                    <p>はい。荷物量や配送順などを確認してお見積もりします。</p>
+                </details><details><summary>不在の場合はどうなりますか？</summary><p>原則手渡しです。不在時は荷主様の指示に従い、置き配の場合は写真で記録します。</p></details><details><summary>予約したら配送は確定しますか？</summary><p>申請は仮受付です。NOAGEが運行状況・荷物・希望時間を確認し、承認のご連絡をした時点で確定します。</p></details><details><summary>当日依頼の締切はありますか？</summary><p>当日の運行状況により異なります。通常の締切時刻は準備中です。遅い時間のご依頼も個別にご相談ください。</p></details></div></section><section id="booking" class="soft"><div class="wrap"><h2>配送を依頼する</h2><p class="intro">当日配送・事前予約に対応。集荷希望日時を選び、配送内容をお知らせください。申請は仮受付であり、承認後に予約確定となります。</p><div class="panel"><h3>1. 集荷希望日・時間</h3><div class="field"><label for="bookingService">料金プラン</label><select id="bookingService"><option value="normal">通常配送</option><option value="omakase">おまかせ配送</option></select></div><div class="field"><label for="bookingDate">集荷希望日 *</label><input type="date" id="bookingDate"></div><p class="small">○ 受付可　△ 要相談　× 受付停止<br>通常配送は90分単位の集荷希望枠です。おまかせ配送は時間調整をお任せいただきます。</p><div id="slots" class="slots"></div><p class="small status" id="slotStatus" role="status"></p><h3>2. 配送内容</h3><form id="requestForm" class="form-grid"><div class="field"><label for="client">お名前・会社名 *</label><input id="client" required maxlength="150"></div><div class="field"><label for="phone">電話番号 *</label><input id="phone" type="tel" required maxlength="50"></div><div class="field"><label for="email">メールアドレス *</label><input id="email" type="email" required></div><div class="field"><label for="serviceType">配送サービス</label><select id="serviceType"><option>スポット配送</option><option>ルート配送</option><option>定期配送</option><option>引き取りお任せ便</option><option>その他のご相談</option></select></div><div class="field wide"><label for="requestPickup">集荷先住所 *</label><input id="requestPickup" required></div><div class="field wide"><label for="requestDest">納品先住所（複数の場合は順番に改行） *</label><textarea id="requestDest" required></textarea></div><div class="field" id="normalPickup"><label for="pickupTime">個別の集荷希望時刻</label><input id="pickupTime" type="time"></div><div class="field" id="normalDelivery"><label for="deliveryTime">配達希望時刻</label><input id="deliveryTime" type="time"></div><div class="field wide" id="omakaseWindows" hidden><label for="pickupWindow">集荷可能時間 *</label><input id="pickupWindow" maxlength="300" placeholder="例：11:00〜16:00"><label for="deliveryWindow">配達可能時間（納品先ごと） *</label><textarea id="deliveryWindow" maxlength="1000" placeholder="例：納品先1 13:00〜18:00"></textarea></div><div class="field wide"><label for="cargo">荷物の内容・個数・サイズ・重量 *</label><textarea id="cargo" required></textarea></div><div class="field wide"><label for="message">その他のご相談（受け渡し方法等）</label><textarea id="message"></textarea></div><div class="field wide"><p id="bookingQuote" class="small">概算料金：未選択</p><label><input type="checkbox" id="consent" required> <a href="#privacy">個人情報の取り扱い</a>と、申請は予約確定ではないことを確認しました。</label></div><div class="field wide"><button class="btn" id="submitRequest" type="submit">依頼内容を作成する（送信準備中）</button></div></form><div id="requestPreview" hidden><h3>依頼内容の確認</h3><pre id="requestText" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#eff9fc;padding:14px"></pre><div class="form-actions"><button class="ghost" id="copyRequest">内容をコピー</button><button class="btn" id="sendRequest" type="button" disabled>仮受付を送信する</button></div></div><p class="small status" id="formStatus" role="status"></p></div></div></section><section id="contact"><div class="wrap contact"><h2>お問い合わせ</h2><p>法人・店舗・個人のお客様からの配送のご相談を承ります。</p><p><strong>電話受付 7:00〜21:00 ／ LINE・Web申請 24時間（設定完了後）</strong><br>日曜・祝日休業</p><div class="actions" id="contactLinks"></div><p id="contactStatus" class="note"></p><p>休業日でも翌営業日以降のご依頼をご相談いただけます。</p></div></section><section id="privacy" class="soft"><div class="wrap"><h2>個人情報の取り扱い</h2><p>配送依頼でお預かりする氏名・連絡先・住所等は、見積もり、予約確認、集荷・配達、問い合わせ対応のために使用します。配送に必要な範囲での利用、法令に基づく場合を除き、適切に管理します。外部の地図・予約・通知サービスを利用する場合は、そのサービスへ必要な情報が送信されます。お問い合わせ窓口は上記の連絡先設定後にご案内します。</p><p class="small">※ 外部サービス接続前は、依頼内容は画面上で作成するのみでNOAGEへ送信されません。正式運用前に実際のデータ管理方法・利用規約をご確認ください。</p></div></section>    </main>
+    <footer>NOAGE（ノアージュ）<br>想いをつなぎ、未来を運ぶ。</footer>
+</body></html>
